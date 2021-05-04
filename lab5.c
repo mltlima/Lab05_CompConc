@@ -119,9 +119,9 @@ int main(int argc, char *argv[]) {
         return 1; 
     }
     potencia = atoi(argv[1]);
-    nThreads = (2 << (potencia+1) );//dimensao do vetor bitshit potencia de 2 para matriz quadrada 2^potencia x 2^potencia
+    nThreads = (2 << potencia-1) * (2 << potencia-1);//dimensao do vetor bitshit potencia de 2 para matriz quadrada 2^potencia x 2^potencia
 
-
+printf("tamanho matriz %d\n",nThreads);
 
 
 
@@ -167,12 +167,11 @@ int main(int argc, char *argv[]) {
 
 
 
-
   printf("\nResultado \n");
     for (int i = 0; i < nThreads ; i++) {
         printf("%d ", vetor[i]);
         count ++;
-        if (count == potencia * potencia){
+        if (count == (potencia * potencia)){
             printf("\n");
             count = 0;
         }
